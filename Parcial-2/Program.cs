@@ -105,9 +105,19 @@ namespace Parcial_2
 
         static void GuardarDatos()
         {
-            using (StreamWriter sw = new StreamWriter("empleados.txt"))
+            using (StreamWriter sw = new StreamWriter("empleados.txt",true))
             {
                 //implementar logica para guardar en un archivo
+
+
+                foreach(Empleado empleado in empleados)
+                {
+                    sw.WriteLine("\n" +empleado);
+
+                }
+
+                
+                
             }
             Console.WriteLine("\nDatos guardados en empleados.txt");
         }
@@ -117,8 +127,10 @@ namespace Parcial_2
             empleados.Clear(); // Limpiar la lista actual antes de cargar nuevos datos
             try
             {
-               //implementar logica para leer los datos de un archivo
-                Console.WriteLine("\nDatos cargados correctamente.");
+                //implementar logica para leer los datos de un archivo
+                Console.WriteLine(File.ReadAllText("empleados.txt"));
+
+                    Console.WriteLine("\nDatos cargados correctamente.");
             }
             catch (FileNotFoundException)
             {
